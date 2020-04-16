@@ -107,32 +107,32 @@ public class SapHrFilterVisitor implements FilterVisitor<Void, JCoFunction> {
 
     @Override
     public Void visitGreaterThanFilter(JCoFunction p, GreaterThanFilter filter) {
-        throw new UnsupportedOperationException("GreaterThanFilter is not supported."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("GreaterThanFilter is not supported.");
     }
 
     @Override
     public Void visitGreaterThanOrEqualFilter(JCoFunction p, GreaterThanOrEqualFilter filter) {
-        throw new UnsupportedOperationException("GreaterThanOrEqualFilter is not supported."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("GreaterThanOrEqualFilter is not supported.");
     }
 
     @Override
     public Void visitLessThanFilter(JCoFunction p, LessThanFilter filter) {
-        throw new UnsupportedOperationException("LessThanFilter is not supported."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("LessThanFilter is not supported.");
     }
 
     @Override
     public Void visitLessThanOrEqualFilter(JCoFunction p, LessThanOrEqualFilter filter) {
-        throw new UnsupportedOperationException("LessThanOrEqualFilter is not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("LessThanOrEqualFilter is not supported yet.");
     }
 
     @Override
     public Void visitNotFilter(JCoFunction p, NotFilter filter) {
-        throw new UnsupportedOperationException("NotFilter is not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("NotFilter is not supported yet.");
     }
 
     @Override
     public Void visitOrFilter(JCoFunction p, OrFilter filter) {
-        throw new UnsupportedOperationException("OrFilter is not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("OrFilter is not supported yet.");
     }
 
     @Override

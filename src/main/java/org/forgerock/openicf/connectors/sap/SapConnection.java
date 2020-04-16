@@ -112,34 +112,47 @@ public class SapConnection {
         connProperties.setProperty(DestinationDataProvider.JCO_LANG, configuration.getLanguage());
         connProperties.setProperty(DestinationDataProvider.JCO_CLIENT, configuration.getClient());
 
-        if (configuration.getSncMode().equals("0")) {
-            connProperties.setProperty(DestinationDataProvider.JCO_SNC_MODE, configuration.getSncMode());
+        if (configuration.getUser() != null) {
             connProperties.setProperty(DestinationDataProvider.JCO_USER, configuration.getUser());
+        }
+
+        if (configuration.getPassword() != null) {
             configuration.getPassword().access(new Accessor() {
                 @Override
                 public void access(char[] clearChars) {
                     connProperties.setProperty(DestinationDataProvider.JCO_PASSWD, new String(clearChars));
                 }
             });
-        } else { // using secure channel
-            connProperties.setProperty(DestinationDataProvider.JCO_SNC_MODE, configuration.getSncMode());
-            connProperties.setProperty(DestinationDataProvider.JCO_SNC_LIBRARY, configuration.getSncLibrary());
-            connProperties.setProperty(DestinationDataProvider.JCO_SNC_MYNAME, configuration.getSncMyName());
-            connProperties.setProperty(DestinationDataProvider.JCO_SNC_PARTNERNAME, configuration.getSncPartnerName());
+        }
+
+        // using secure channel
+        if ("1".equals(configuration.getSncMode()))
+        {
+            connectionProperties.setProperty(DestinationDataProvider.JCO_SNC_SSO, configuration.getSncSSO());
             connProperties.setProperty(DestinationDataProvider.JCO_SNC_QOP, configuration.getSncQoP());
-            connProperties.setProperty(DestinationDataProvider.JCO_X509CERT, configuration.getX509Cert());
-//            connectionProperties.setProperty(DestinationDataProvider.JCO_SNC_SSO, configuration.getSncSSO());
+            connProperties.setProperty(DestinationDataProvider.JCO_SNC_LIBRARY, configuration.getSncLibrary());
+
+            if (configuration.getSncMyName() != null) {
+                connProperties.setProperty(DestinationDataProvider.JCO_SNC_MYNAME, configuration.getSncMyName());
+            }
+
+            if (configuration.getSncPartnerName() != null) {
+                connProperties.setProperty(DestinationDataProvider.JCO_SNC_PARTNERNAME, configuration.getSncPartnerName());
+            }
+
+            if (configuration.getX509Cert() != null) {
+                connProperties.setProperty(DestinationDataProvider.JCO_X509CERT, configuration.getX509Cert());
+            }
         }
 
         if (configuration.isDirectConnection()) {
             connProperties.setProperty(DestinationDataProvider.JCO_SYSNR, configuration.getSystemNumber());
             connProperties.setProperty(DestinationDataProvider.JCO_ASHOST, configuration.getAsHost());
+        } else {
+            // message server
+            connProperties.setProperty(DestinationDataProvider.JCO_MSHOST, configuration.getMsHost());
+            connProperties.setProperty(DestinationDataProvider.JCO_MSSERV, configuration.getMsServ());
         }
-        // Not used for now - Related to message server
-//        else {
-//            connProperties.setProperty(DestinationDataProvider.JCO_MSHOST, configuration.getMsHost());
-//            connProperties.setProperty(DestinationDataProvider.JCO_MSSERV, configuration.getMsServ());
-//        }
 
         if (configuration.getGroup() != null) {
             connProperties.setProperty(DestinationDataProvider.JCO_GROUP, configuration.getSapRouter());

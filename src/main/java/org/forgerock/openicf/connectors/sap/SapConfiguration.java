@@ -441,7 +441,7 @@ public class SapConfiguration extends ScriptedConfiguration {
     /**
      * SNC level of security, 1 to 9.
      */
-    private String sncQoP = null;
+    private String sncQoP = "3";
 
     /**
      * Return the sncQoP string
@@ -516,7 +516,7 @@ public class SapConfiguration extends ScriptedConfiguration {
     /**
      * Use of the SSO behavior of SNC, 0 (off) or 1 (on).
      */
-    private String sncSSO = "1";
+    private String sncSSO = "0";
 
     /**
      * Return the sncSSO string
